@@ -236,43 +236,7 @@ def option4(tree:Treeview):
         del_data(connection,name_del)
         
     
-#
-def main():
-
-    with sqlite3.connect("db_student.sqlite") as connection:
-        print ('Press 1 to view students which age more than your choice,max=25')
-        print ('Press 2 to view students from specific department')
-        print ('Press 3 to add new students ')
-        print ('Press 4 to remove students ')
-        ans = int(input('What would you like to do ?: '))
-
-        if ans== 1:
-            age=input("age? :")
-            student_list= ask_list(connection,age)
-            list(map(print,student_list))
-        
-        elif ans == 2:
-            for i in dept_list:
-                print(f"Department :{i}")
-            programme=input("what programme? (Refer to the top department list) : ")
-            get_programme(connection,programme)
-        
-        elif ans == 3:
-            name = input("Name : ")
-            age = input("Age : ")
-            dept = input(f"Department, as included in here {dept_list} : ")
-            get_new(connection,name,age,dept)
-
-        elif ans == 4:
-            with open("new_name_student.txt") as text_file:
-                name_list = text_file.readlines()
-            for sub_text in name_list:
-                print(sub_text)
-            name_del = input("Whose name do you want to delete : ")
-            del_data(connection,name_del)
-        
-        else:
-            print("System Invalid")
+#running the programme
 
 gui_main()
 
